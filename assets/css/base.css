@@ -1,0 +1,192 @@
+/* Dựng base */
+
+:root{
+    --white-color: #fff;
+    --black-color:#000;
+    --text-color:#333;
+    --primary-color:#EE4D2D;
+    --border-color: #dbdbdb;
+
+    --header-height: 120px;
+    --navbar-height: 27px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+}
+
+*{
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%;   /* 1rem = 16px = 100% --> 10px = 1rem = 62.5% -->16px = 1.6rem */
+    line-height: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.grid{
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.grid__full-width{
+    width: 100%;
+}
+
+.grid__row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+
+/* Test */
+
+.grid__column-2{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 16.6667%;
+}
+
+.grid__column-2-4{  /*Tỉ lệ 5 sản phẩm trong 1 hàng, mà 1 hàng có tổng 12 cột, nên ta lấy 12/5 được 2.4 cột, vậy mỗi sản phẩm chiếm 2.4 cột trong 12 cột, nhưng trong hệ thống grid 2.4 thì bị lẻ nên ta lấy 100% làm mốc để chia sản phẩm sao cho phù hợp nên 100%/5=20% */
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 20%;
+}
+
+
+.grid__column-10{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: calc(100% - 16.6667%);
+}
+
+
+/* Animation */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes growth{
+    from{
+        transform: scale(var(--growth-form));
+    }
+    to{
+        transform: scale(var(--growth-to));
+    }
+}
+
+/* Modal */
+
+.modal{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    animation: fadeIn linear 0.1s;
+    display: none;
+}
+
+.modal__overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal__body{
+    --growth-form: 0.7;
+    --growth-to: 1;
+    margin: auto;
+    z-index: 1;
+    border-radius: 5px;
+    background-color: var(--white-color);
+    animation: growth linear 0.1s;
+}
+
+/* btn modal */
+.btn{
+    border: none;
+    text-decoration: none;
+    background-color: var(--white-color);
+    min-width: 124px;
+    height: 34px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    cursor: pointer;
+    line-height: 1.6rem;
+}
+
+.btn.btn--hover:hover{
+    background-color: #ccc;
+}
+
+.btn.btn--primary{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.btn--size-s{
+    height: 32px;
+    font-size: 1.4rem;
+    min-width: 240px;
+}
+
+/* Vô hiệu hoá nút (disable) */
+.btn.btn--disable{
+    cursor: default;
+    color: #949494;
+    background-color: #c3c3c3;
+}
+
+
+/* Pagination: phân trang */
+
+.pagination{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 300;
+    padding-left: 0;
+}
+
+.pagination-item{
+    margin: 0 14px;
+}
+
+.pagination-item--active .pagination-item__link{
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination-item--active .pagination-item__link:hover{
+    background-color: var(--primary-color);
+    opacity: 0.9;
+}
+
+.pagination-item__link{
+    --height: 30px;
+    text-decoration: none;
+    color: #939393;
+    display: block;
+    min-width: 40px;
+    height: var(--height);
+    text-align: center;
+    line-height: var(--height);
+    border-radius: 2px;
+}
+
+
+
+
